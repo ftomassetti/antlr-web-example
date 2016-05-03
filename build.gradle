@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    runtime 'org.antlr:antlr4:4.5.3'
+    runtime 'org.antlr:antlr4:4.5.2'
 }
 
 task generateParser(type:JavaExec) {
