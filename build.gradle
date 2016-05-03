@@ -13,5 +13,5 @@ dependencies {
 task generateParser(type:JavaExec) {
    main = 'org.antlr.v4.Tool'
    classpath = sourceSets.main.runtimeClasspath
-   args = ['-Dlanguage=JavaScript', 'todo-grammar.g4']
+   args = ['-Dlanguage=JavaScript', 'todo.g4', '-o', 'generated-parser']
 }
