@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+dependencies {
+    runtime 'org.antlr:antlr4:4.5.3'
+}
+
+task generateParser(type:JavaExec) {
+   main = 'org.antlr.v4.Tool'
+   classpath = sourceSets.main.runtimeClasspath
+   args = ['-Dlanguage=JavaScript', 'todo-grammar.g4']
+}
