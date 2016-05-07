@@ -1,0 +1,19 @@
+#tree {
+    margin-left: 50px;
+    float:left;
+    clear:right;
+}
+
+#inputs {
+    float:left;
+    clear:left;
+}
+
+.todoElement {
+    background: beige;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid black;
+    margin: 10px;
+}

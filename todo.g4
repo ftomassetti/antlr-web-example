@@ -5,7 +5,7 @@ elements
     ;
 
 element
-    : 'todo' STRING NL
+    : '*' ( ' ' | '\t' )* CONTENT NL
     ;
 
 emptyLine
@@ -20,6 +20,6 @@ WS
     : ( ' ' | '\t' ) -> channel ( HIDDEN )
     ;
 
-STRING
-    : ( '%s' | '%i' )? '"' ( ~ '"' )* '"'
+CONTENT
+    : [a-zA-Z0-9_][a-zA-Z0-9_ \t]*
     ;    

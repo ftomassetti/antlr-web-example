@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ANTLR on the Web</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="lib/require.js"></script> 
+</head>
+<body>
+<div id="inputs">
+<textarea id="code">
+* play with antlr4
+* write a tutorial
+</textarea>
+<br/>
+<button id="parse">Parse</button>
+</div>
+<script type="text/javascript">
+
+var updateTree = function(tree, ruleNames) {
+    var container = document.getElementById("tree");
+    while (container.hasChildNodes()) {
+        container.removeChild(container.lastChild);
+    }
+
+    for (var i = 0; i < tree.children.length; i++) {
+        var child = tree.children[i];
+        var nodeType = ruleNames[child.ruleIndex];
+        if (nodeType == "element") {
+            var newElement = document.createElement("div");
+            newElement.className = "todoElement";
+            var newElementText = document.createTextNode(child.children[2].getText());
+            newElement.appendChild(newElementText);
+            container.appendChild(newElement);
+        }
+    }
+};
+
+var antlr4 = require('antlr4/index');
+var TodoLexer = require('generated-parser/todoLexer');
+var TodoParser = require('generated-parser/todoParser');
+document.getElementById("parse").addEventListener("click", function(){
+    var input = document.getElementById("code").value;
+    var chars = new antlr4.InputStream(input);
+    var lexer = new TodoLexer.todoLexer(chars);
+    var tokens  = new antlr4.CommonTokenStream(lexer);
+    var parser = new TodoParser.todoParser(tokens);
+    parser.buildParseTrees = true;
+    var tree = parser.elements();
+    console.log("Parsed: "+ tree);
+    updateTree(tree, parser.ruleNames);
+});
+</script>
+<div id="tree">
+</div> 
+</body>
+</html>
