@@ -5,7 +5,7 @@ elements
     ;
 
 element
-    : '*' ( ' ' | '\t' )* CONTENT NL
+    : '*' ( ' ' | '\t' )* CONTENT NL+
     ;
 
 emptyLine
@@ -14,10 +14,6 @@ emptyLine
 
 NL
     : '\r' | '\n' 
-    ;
-
-WS
-    : ( ' ' | '\t' ) -> channel ( HIDDEN )
     ;
 
 CONTENT
