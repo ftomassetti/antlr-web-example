@@ -1,3 +1,7 @@
+# Article
+
+This code is described in [this article](http://tomassetti.me/antlr-and-the-web/)
+
 # Dependencies
 
 The ANTLR Javascript runtime was obtained from here:
